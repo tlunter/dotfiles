@@ -45,6 +45,7 @@ promptSetup () {
         else
             VCS_LINE+="➜ ± on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
         fi
+        VCS_LINE+=$(need_push)
     fi
 
     # rootshell gets another prompt sign
