@@ -2,16 +2,28 @@ set nocompatible
 syntax on
 set number
 set ruler
-
-set guifont=Inconsolata:h15
+set showcmd
+set showmode
+set visualbell
+set hidden
 
 " Whitespace stuff
 set nowrap
+set autoindent
+set smartindent
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set linespace=2
 set expandtab
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+" Undo stuff
+set undodir=~/.vim/backup
+set undofile
 
 " Searching
 set hlsearch
@@ -42,6 +54,20 @@ set backspace=indent,eol,start
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
+
+" Completion list
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 if filereadable('manage.py')
     map <Leader>db :! ./manage.py dbshell
