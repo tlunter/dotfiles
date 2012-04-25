@@ -13,8 +13,8 @@ alias grep='grep --color=auto'
 
 ##### standard aliases (start with a space to be ignored in history)
 # default ls is untouched, except coloring
-alias ls=' ls --color=auto'
-alias myls=' ls -Alph --color=always'
+alias ls='ls --color=auto'
+alias myls='ls -Alph --color=always'
 alias l=" myls"
 alias ll=' myls -l'
 alias la=' myls -A'
