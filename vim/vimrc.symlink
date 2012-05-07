@@ -4,7 +4,6 @@ set number
 set ruler
 set showcmd
 set showmode
-set visualbell
 set hidden
 
 " Whitespace stuff
@@ -17,9 +16,6 @@ set shiftwidth=4
 set softtabstop=4
 set linespace=2
 set expandtab
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
 
 " Undo stuff
 set undodir=~/.vim/backup
@@ -44,10 +40,10 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=r
 au BufNewFile,BufRead *.json set ft=javascript
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
 
 " make Ruby use 2 spaces
-au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
+au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -77,3 +73,4 @@ endif
 map <Leader>reap :! sudo apache2ctl restart
 map <Leader>ws :w !sudo tee %
 
+noremap <CR> :noh<CR><CR>
