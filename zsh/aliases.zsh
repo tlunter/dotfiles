@@ -9,12 +9,11 @@ alias vedit=" $EDITOR $ZSH/vim/vimrc.symlink"
 alias gedit=" $EDITOR $ZSH/git/gitconfig.symlink"
 
 #alias man="unset PAGER; man"
-alias grep='grep --color=auto'
+#alias grep='grep --color=auto'
 
 ##### standard aliases (start with a space to be ignored in history)
 # default ls is untouched, except coloring
-alias ls='ls --color=auto'
-alias myls='ls -Alph --color=always'
+alias myls='ls -Alph'
 alias l=" myls"
 alias ll=' myls -l'
 alias la=' myls -A'
