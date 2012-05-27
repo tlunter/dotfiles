@@ -14,7 +14,7 @@ alias gedit=" $EDITOR $ZSH/git/gitconfig.symlink"
 ##### standard aliases (start with a space to be ignored in history)
 # default ls is untouched, except coloring
 alias myls='ls -Alph'
-alias l=" myls"
+alias ls=" myls"
 alias ll=' myls -l'
 alias la=' myls -A'
 alias v=" clear; ll -g"    # standard directory view
