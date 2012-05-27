@@ -18,9 +18,10 @@ compinit
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
 
-if [[ -n $SSH_AGENT_PID ]]; then
-    echo "SSH already loaded"
+if [[ -n `ps aux | grep ssh-agent | grep -v grep` ]]; then
+
 else
     eval $(ssh-agent)
     ssh-add
 fi
+
