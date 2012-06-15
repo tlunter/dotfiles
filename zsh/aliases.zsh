@@ -25,6 +25,9 @@ alias g='git'
 alias d=' dirs -v'
 alias ka="killall"
 
+# Removes the terrible .DS_Store files from the Mac OS X operating system
+alias dsclean=' find . -type f -name "*.DS_Store" -exec rm -f \{\} \;'
+
 #alias .='xdg-open .'
 alias cd=' cd'
 alias ..=' cd ..; ls'
