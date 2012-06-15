@@ -52,3 +52,9 @@ setopt PUSHD_IGNORE_DUPS
 
 # DON NOT Allow ‘>’ redirection to truncate existing files, and ‘>>’ to create files. Otherwise ‘>!’ or ‘>|’ must be used to truncate  a file, and ‘>>!’ or ‘>>|’ to create a file.
 setopt no_clobber
+
+# Sets the default editor to Vim
+EDITOR=/usr/bin/vim
+
+# Keeps Emacs bindings, better than Vim bindings for the shell
+bindkey -e
