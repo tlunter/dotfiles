@@ -68,6 +68,8 @@ set wildignore+=*.png,*.jpg,*.gif
 if filereadable('manage.py')
     map <Leader>db :! ./manage.py dbshell
     map <Leader>cs :! ./manage.py collectstatic
+    map <Leader>shell :! ./manage.py shell
+    map <Leader>test :! ./manage.py test 
 endif
 
 map <Leader>reap :! sudo apache2ctl restart
