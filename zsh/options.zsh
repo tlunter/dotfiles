@@ -1,5 +1,8 @@
 export GREP_OPTIONS='-D skip --binary-files=without-match --ignore-case'
 
+# Keeps Emacs bindings, better than Vim bindings for the shell
+bindkey -e
+
 # keybindings Strg+v is your friend :-)
 bindkey "^[[1;5D" .backward-word
 bindkey "^[[1;5C" .forward-word
@@ -55,6 +58,3 @@ setopt no_clobber
 
 # Sets the default editor to Vim
 EDITOR=/usr/bin/vim
-
-# Keeps Emacs bindings, better than Vim bindings for the shell
-bindkey -e
