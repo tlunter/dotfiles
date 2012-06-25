@@ -49,6 +49,7 @@ promptSetup () {
 
     # rootshell gets another prompt sign
     PR_SIGN=$NOCOLOR
+    PR_SIGN="%m "
     PR_SIGN+="%F{160}%B"
     PR_SIGN+=%(#."☠".'∴')
     PR_SIGN+="%F{white}%b"
