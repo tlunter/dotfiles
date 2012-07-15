@@ -76,3 +76,7 @@ map <Leader>reap :! sudo apache2ctl restart
 map <Leader>ws :w !sudo tee %
 
 noremap <CR> :noh<CR><CR>
+
+imap <Tab> <C-P>
+set complete=.,b,u,]
+set wildmode=longest,list:longest
