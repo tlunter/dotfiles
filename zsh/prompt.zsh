@@ -34,6 +34,11 @@ promptSetup () {
     PS3="↷ ?#"; RPS3=''
     PS4="↷ +i>"; RPS3=''
 
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        RPS1+=" "
+        RPS1+=$(basename $VIRTUAL_ENV)
+    fi
+
     # prepare vcs info
     VCS_LINE=''
     VCS_LINE+=$NOCOLOR
