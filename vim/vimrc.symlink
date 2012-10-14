@@ -34,16 +34,16 @@ set laststatus=2
 au FileType make set noexpandtab
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set filetype=ruby
 
 " add json syntax highlighting
-au BufRead,BufNewFile *.json set ft=javascript
+au BufRead,BufNewFile *.json set filetype=javascript
 
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
-au filetype racket set lisp
-au filetype racket set autoindent
-au filetype racket set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
+au FileType racket set lisp
+au FileType racket set autoindent
+au FileType racket set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
@@ -58,7 +58,7 @@ set backspace=indent,eol,start
 filetype plugin indent on
 
 " Completion list
-set wildmode=list:longest
+set wildmode=longest,list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
@@ -70,7 +70,10 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set complete=.,b,u,]
+imap <S-Tab> <C-P>
 
+" Django specific macros
 if filereadable('manage.py')
     map <Leader>db :! ./manage.py dbshell
     map <Leader>cs :! ./manage.py collectstatic
@@ -78,12 +81,10 @@ if filereadable('manage.py')
     map <Leader>test :! ./manage.py test 
 endif
 
+" Restart Apache Macro
 map <Leader>reap :! sudo apache2ctl restart
+" A work around when vim isn't open with sudo
 map <Leader>ws :w !sudo tee %
-
+" Cancel highlighting by hitting enter
 noremap <CR> :noh<CR><CR>
-
-imap <Tab> <C-P>
-set complete=.,b,u,]
-set wildmode=longest,list:longest
 
