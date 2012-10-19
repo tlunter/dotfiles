@@ -18,10 +18,12 @@ compinit
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
 
-if [[ -n `ps aux | grep ssh-agent | grep -v grep` ]]; then
-
-else
+if [[ ! -n `ps aux | grep ssh-agent | grep -v grep` ]]; then
     eval $(ssh-agent)
     ssh-add
+fi
+
+if [[ -a ~/.pystartup ]]; then
+    export PYTHONSTARTUP=~/.pystartup
 fi
 

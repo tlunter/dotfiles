@@ -88,3 +88,6 @@ map <Leader>ws :w !sudo tee %
 " Cancel highlighting by hitting enter
 noremap <CR> :noh<CR><CR>
 
+set mouse=a
+set term=xterm
+set scrolloff=10
