@@ -9,6 +9,9 @@ bindkey "^[[1;5C" .forward-word
 bindkey "^[[1;6D" backward-delete-word
 bindkey "^[[1;6C" delete-word
 
+bindkey "^[[3~" delete-char
+bindkey "^[3;5~" delete-char
+
 # arrow up/down searches in history if line is already started
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
