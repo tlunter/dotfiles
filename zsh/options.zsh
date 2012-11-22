@@ -30,7 +30,7 @@ zstyle ':completion:hist-complete:*' completer _history
 bindkey '^X^X' hist-complete
 
 # If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory.
-setopt AUTO_CD
+#setopt AUTO_CD
 
 # Treat  the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc.  (An initial unquoted ‘~’ always produces named directory expansion.)
 setopt EXTENDED_GLOB

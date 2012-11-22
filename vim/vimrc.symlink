@@ -1,3 +1,6 @@
+" First turn on pathogen
+call pathogen#infect('$ZSH/bundle')
+
 set nocompatible
 syntax on
 set number
@@ -39,6 +42,9 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set file
 " add json syntax highlighting
 au BufRead,BufNewFile *.json set filetype=javascript
 
+au VimEnter * NERDTree
+au VimEnter * wincmd w
+
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
 au FileType racket set lisp
@@ -71,7 +77,6 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
-imap <S-Tab> <C-P>
 
 " Django specific macros
 if filereadable('manage.py')
@@ -91,3 +96,5 @@ noremap <CR> :noh<CR><CR>
 set mouse=a
 set term=xterm
 set scrolloff=10
+imap jj <Esc>
+
