@@ -3,5 +3,5 @@ if [[ `uname -n` == 'lannister' ]]; then
     PROJECT_HOME=~/Projects/Python
     source /usr/local/bin/virtualenvwrapper.sh
 
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    PATH=$PATH:$HOME/.rvm/bin:./lib/tasks # Add RVM to PATH for scripting
 fi

@@ -1,0 +1,7 @@
+[user]
+	name = Todd Lunter
+	email = tlunter@gmail.com
+[push]
+    default = tracking
+[github]
+    user = tlunter

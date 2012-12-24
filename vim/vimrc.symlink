@@ -33,6 +33,10 @@ set smartcase
 " Status bar
 set laststatus=2
 
+" Color scheme
+set background=dark
+colorscheme solarized
+
 " make uses real tabs
 au FileType make set noexpandtab
 
@@ -97,4 +101,9 @@ set mouse=a
 set term=xterm
 set scrolloff=10
 imap jj <Esc>
+
+noremap <C-P> :bp<CR>
+noremap <C-N> :bn<CR>
+map! <C-P> <Esc> :bp<CR>
+map! <C-N> <Esc> :bn<CR>
 
