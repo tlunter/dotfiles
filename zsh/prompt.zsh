@@ -44,7 +44,7 @@ promptSetup () {
     VCS_LINE+=$NOCOLOR
     st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
     if [[ $st != "" ]]; then
-        if [[ $st == "nothing to commit (working directory clean)" ]]; then
+        if [[ $st == "nothing to commit (working directory clean)" || $st == "nothing to commit, working directory clean" ]]; then
             VCS_LINE+="➜ ± on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
         else
             VCS_LINE+="➜ ± on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
