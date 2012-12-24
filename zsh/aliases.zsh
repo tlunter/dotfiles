@@ -13,10 +13,9 @@ alias gedit=" $EDITOR $ZSH/git/gitconfig.symlink"
 
 ##### standard aliases (start with a space to be ignored in history)
 # default ls is untouched, except coloring
-alias myls='ls -lph'
-alias ls=' myls '
-alias ll=' myls -l'
-alias la=' myls -A'
+alias ls='ls -lph'
+alias ll='ls -l'
+alias la='ls -A'
 alias v=" clear; ll -g"    # standard directory view
 alias vs=" v **/*(.)"         # show all files in all subdirs plain in a list
 
@@ -29,7 +28,7 @@ alias ka="killall"
 alias dsclean=' find . -type f -name "*.DS_Store" -exec rm -f \{\} \;'
 
 #alias .='xdg-open .'
-alias cd=' cd'
+alias cd='cd'
 alias ..=' cd ..; ls'
 alias ...=' cd ..; cd ..; ls'
 alias ....=' cd ..; cd ..; cd ..; ls'

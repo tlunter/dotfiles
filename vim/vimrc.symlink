@@ -99,6 +99,7 @@ noremap <CR> :noh<CR><CR>
 
 set mouse=a
 set term=xterm
+set encoding=utf8
 set scrolloff=10
 imap jj <Esc>
 
