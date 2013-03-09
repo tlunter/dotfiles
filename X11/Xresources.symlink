@@ -1,9 +1,9 @@
-*font:                  xft:DejaVu Sans Mono for Powerline:size=10
-*wideChars:             true
-*locale:                true
-*utf8:                  1
-*vt100Graphics:         true
-*urlLauncher:           /usr/bin/chromium
+*font:             xft:Dejavu Sans Mono:size=12
+*wideChars:        true
+*locale:           true
+*utf8:             1
+*vt100Graphics:    true
+*urlLauncher:      /usr/bin/chromium
 URxvt.perl-ext-common:  default
 URxvt.modifier:         alt
 URxvt.termName:         xterm-256color

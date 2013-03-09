@@ -3,18 +3,12 @@ Config { font = "xft:Monospace:pixelsize=11"
        , fgColor      = "grey"
        , position     = TopW L 97
        , lowerOnStart = True
-       , commands     = [ Run Battery [ "-t", "<acstatus>"
-                                      , "-L", "10", "-H", "80"
-                                      , "-l", "red", "-h", "green"
-                                      , "--", "-O", "Charging: <left>%", "-o", "Battery: <timeleft>"
-                                      , "-i", "Not Charging: <left>%"
-                                      ] 50
-                        , Run Date "%a %b %_d %l:%M" "date" 50
+       , commands     = [ Run Date "%a %b %_d %l:%M" "date" 50
                         , Run Volume "default" "Master" [ "-t", "Vol: <status>"
                                                         , "--", "-O", "<volume>%", "-o", "Mute"
                                                         ] 5
                         , Run StdinReader ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = "%StdinReader% }       <fc=#ee9a00>%date%</fc> { %default:Master% %battery% "
+       , template     = "%StdinReader% }       <fc=#ee9a00>%date%</fc> { %default:Master% "
        }
