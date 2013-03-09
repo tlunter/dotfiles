@@ -1,0 +1,57 @@
+import XMonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Hooks.EwmhDesktops
+import System.IO
+import Data.List (isInfixOf)
+
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+
+myLayouts = Full ||| tall ||| Mirror tall
+          where tall    = Tall nmaster delta ratio
+                nmaster = 1
+                ratio   = 1/2
+                delta   = 3/100
+
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+
+myBar = "xmobar"
+
+myPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 100
+                , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
+
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
+
+myConfig = defaultConfig
+        { workspaces      = myWorkspaces
+        , handleEventHook = fullscreenEventHook
+        , manageHook      = manageDocks <+> manageHook defaultConfig
+        , layoutHook      = avoidStruts $ myLayouts
+        , terminal        = "urxvt"
+        , borderWidth     = 1
+        , modMask         = mod4Mask }
+        `additionalKeysP`
+        [ ("S-<Print>",                spawn "scrot")
+        , ("C-<Print>",              spawn "sleep 0.2; scrot -s")
+        , ("M-x t",                  spawn "urxvt")
+        , ("M-x M-t",                spawn "urxvt")
+        , ("M-x c",                  spawn "chromium")
+        , ("M-x M-c",                spawn "chromium")
+        , ("M-x v",                  spawn "gvim") 
+        , ("M-x M-v",                spawn "gvim")
+        , ("M-x s",                  spawn "sudo pm-suspend")
+        , ("M-x M-s",                spawn "sudo pm-suspend")
+        , ("M-x e",                  spawn "evince")
+        , ("M-x M-e",                spawn "evince")
+        , ("M-x y",                  spawn "qsynergy")
+        , ("M-x M-y",                spawn "qsynergy")
+        , ("M-x b",                  spawn "virtualbox")
+        , ("M-x M-b",                spawn "virtualbox")
+        , ("M-x l",                  spawn "libreoffice")
+        , ("M-x M-l",                spawn "libreoffice")
+        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 4-" )
+        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 4+" )
+        , ("<XF86AudioMute>",        spawn "amixer sset Master toggle" ) ]
+

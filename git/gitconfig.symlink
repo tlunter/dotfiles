@@ -5,3 +5,7 @@
     default = tracking
 [github]
     user = tlunter
+[http]
+	sslVerify = false
+[core]
+	editor = gvim -f

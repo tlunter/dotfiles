@@ -1,0 +1,13 @@
+#!/bin/bash
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+/home/tlunter/.background/wallpaper.sh &
+
+xsetroot -cursor_name left_ptr
+
+xscreensaver -no-splash &
+
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 3 --transparent true --alpha 0 --tint 0x000000 --height 17 --monitor primary &
+
+
+exec xmonad

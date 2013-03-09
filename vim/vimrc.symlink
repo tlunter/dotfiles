@@ -34,8 +34,13 @@ set smartcase
 set laststatus=2
 
 " Color scheme
-set background=dark
-colorscheme solarized
+set background=
+colorscheme hojberg
+if has('gui_running')
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
+
+let mapleader=','
 
 " make uses real tabs
 au FileType make set noexpandtab
@@ -45,9 +50,6 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set file
 
 " add json syntax highlighting
 au BufRead,BufNewFile *.json set filetype=javascript
-
-au VimEnter * NERDTree
-au VimEnter * wincmd w
 
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
@@ -82,6 +84,7 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
 
+map <Leader>ve :e ~/.vimrc
 " Django specific macros
 if filereadable('manage.py')
     map <Leader>db :! ./manage.py dbshell
@@ -91,20 +94,20 @@ if filereadable('manage.py')
 endif
 
 " Restart Apache Macro
-map <Leader>reap :! sudo apache2ctl restart
+if hostname() == "greyjoy"
+    map <Leader>reap :! sudo systemctl restart httpd.service
+    map <F5> :CtrlPClearCache<CR>
+else
+    map <Leader>reap :! sudo apache2ctl restart
+endif
 " A work around when vim isn't open with sudo
 map <Leader>ws :w !sudo tee %
 " Cancel highlighting by hitting enter
 noremap <CR> :noh<CR><CR>
 
 set mouse=a
-set term=xterm
 set encoding=utf8
 set scrolloff=10
 imap jj <Esc>
 
-noremap <C-P> :bp<CR>
-noremap <C-N> :bn<CR>
-map! <C-P> <Esc> :bp<CR>
-map! <C-N> <Esc> :bn<CR>
-
+let g:miniBufExplMapWindowNavVim = 1 
