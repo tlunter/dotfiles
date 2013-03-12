@@ -9,3 +9,4 @@
 	sslVerify = false
 [core]
 	editor = gvim -f
+    excludesfile = ~/.gitignore
