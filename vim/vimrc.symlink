@@ -111,3 +111,4 @@ set scrolloff=10
 imap jj <Esc>
 
 let g:miniBufExplMapWindowNavVim = 1 
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
