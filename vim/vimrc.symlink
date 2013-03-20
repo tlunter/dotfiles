@@ -85,6 +85,9 @@ set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
 
 map <Leader>ve :e ~/.vimrc
+map <Leader>rv :source ~/.vimrc
+map f <Leader><Leader>f
+map F <Leader><Leader>F
 " Django specific macros
 if filereadable('manage.py')
     map <Leader>db :! ./manage.py dbshell
@@ -112,3 +115,4 @@ imap jj <Esc>
 
 let g:miniBufExplMapWindowNavVim = 1 
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
