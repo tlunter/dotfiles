@@ -53,15 +53,17 @@ au BufRead,BufNewFile *.json set filetype=javascript
 
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
-au FileType racket set lisp
-au FileType racket set autoindent
-au FileType racket set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
+au FileType racket  set lisp
+au FileType racket  set autoindent
+au FileType racket  set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
+au FileType mkd     set wrap
+au FileType mkd     setlocal nofoldenable
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
+au FileType python  set softtabstop=4 tabstop=4 shiftwidth=4
 
 " make Ruby use 2 spaces
-au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -86,6 +88,7 @@ set complete=.,b,u,]
 
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
+map <Leader>pf <Esc>:pyfile %<CR>
 map f <Leader><Leader>f
 map F <Leader><Leader>F
 " Django specific macros
@@ -113,6 +116,7 @@ set encoding=utf8
 set scrolloff=10
 imap jj <Esc>
 
-let g:miniBufExplMapWindowNavVim = 1 
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
+map <C-h> :bfirst<CR>
+map <C-j> :bnext<CR>
+map <C-k> :bprev<CR>
+map <C-l> :blast<CR>
