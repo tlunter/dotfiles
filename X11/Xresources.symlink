@@ -4,6 +4,7 @@
 *utf8:             1
 *vt100Graphics:    true
 *urlLauncher:      /usr/bin/chromium
+URxvt.perl-ext-common:  default,tabbed
 
 ! Solarized color scheme for the X Window System
 !
