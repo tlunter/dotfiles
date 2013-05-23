@@ -20,5 +20,5 @@ Config { font = "xft:Monospace:pixelsize=11"
                         , Run StdinReader ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = "%StdinReader% } <fc=#ee9a00>%date%</fc> { %battery% | %wlp3s0wi% %wlp3s0% | %cpu% | %memory%"
+       , template     = "%StdinReader% }     <fc=#ee9a00>%date%</fc> { %battery% | %wlp3s0wi% %wlp3s0% | %cpu% | %memory%"
        }
