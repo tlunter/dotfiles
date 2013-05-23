@@ -19,7 +19,7 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
 myBar = "xmobar"
 
-myPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 100
+myPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 80
                 , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
 
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
@@ -33,7 +33,7 @@ myConfig = defaultConfig
         , borderWidth     = 1
         , modMask         = mod4Mask }
         `additionalKeysP`
-        [ ("S-<Print>",                spawn "scrot")
+        [ ("S-<Print>",              spawn "scrot")
         , ("C-<Print>",              spawn "sleep 0.2; scrot -s")
         , ("M-x t",                  spawn "urxvt")
         , ("M-x M-t",                spawn "urxvt")
@@ -53,5 +53,5 @@ myConfig = defaultConfig
         , ("M-x M-l",                spawn "libreoffice")
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 4-" )
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 4+" )
-        , ("<XF86AudioMute>",        spawn "amixer sset Master toggle" ) ]
+        , ("<XF86AudioMute>",        spawn "amixer set Master toggle" ) ]
 
