@@ -3,22 +3,15 @@ Config { font = "xft:Monospace:pixelsize=11"
        , fgColor      = "grey"
        , position     = TopW L 97
        , lowerOnStart = True
-       , commands     = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                        , Run Memory ["-t","Mem: <usedratio>%"] 10
-                        , Run Battery [ "-t", "<acstatus> <left>%"
+       , commands     = [ Run Battery [ "-t", "<acstatus>"
                                       , "-L", "10", "-H", "80"
                                       , "-l", "red", "-h", "green"
-                                      , "--", "-O", "Charging:", "-o", "Battery:"
-                                      ] 10
-                        , Run Wireless "wlp3s0" [ "-t", "<essid>" ] 10
-                        , Run Network "wlp3s0" [ "-S", "true"
-                                               , "-t", "Down: <rx> Up: <tx>"
-                                               , "-L", "10", "-H", "80"
-                                               , "-n", "green", "-h", "red"
-                                               ] 10
-                        , Run Date "%a %b %_d %l:%M" "date" 10
+                                      , "--", "-O", "Charging: <left>%", "-o", "Battery: <timeleft>"
+                                      , "-i", "Not Charging: <left>%"
+                                      ] 50
+                        , Run Date "%a %b %_d %l:%M" "date" 50
                         , Run StdinReader ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = "%StdinReader% }     <fc=#ee9a00>%date%</fc> { %battery% | %wlp3s0wi% %wlp3s0% | %cpu% | %memory%"
+       , template     = "%StdinReader% }       <fc=#ee9a00>%date%</fc> { %battery% "
        }

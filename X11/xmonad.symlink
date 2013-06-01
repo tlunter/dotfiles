@@ -1,6 +1,9 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Grid
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Hooks.EwmhDesktops
@@ -9,18 +12,26 @@ import Data.List (isInfixOf)
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
-myLayouts = Full ||| tall ||| Mirror tall
-          where tall    = Tall nmaster delta ratio
-                nmaster = 1
-                ratio   = 1/2
-                delta   = 3/100
+myLayouts = Full ||| tall ||| Mirror tall ||| Grid
+          where tall      = Tall nmaster delta ratio
+                nmaster   = 1
+                ratio     = 1/2
+                delta     = 3/100
 
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+main =
+    do a <- statusBar botBar botPP toggleStrutsKey myConfig
+       b <- statusBar topBar topPP toggleStrutsKey a
+       xmonad b
 
-myBar = "xmobar"
+topBar = "xmobar"
+botBar = "xmobar /home/tlunter/.xmobar-botrc"
 
-myPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 80
-                , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
+topPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 80
+                 , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
+
+botPP = defaultPP
+
+myXPConfig = greenXPConfig { position = Top }
 
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
@@ -53,5 +64,6 @@ myConfig = defaultConfig
         , ("M-x M-l",                spawn "libreoffice")
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 4-" )
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 4+" )
-        , ("<XF86AudioMute>",        spawn "amixer set Master toggle" ) ]
+        , ("<XF86AudioMute>",        spawn "amixer set Master toggle" )
+        , ("M-S-x",                  shellPrompt myXPConfig) ]
 

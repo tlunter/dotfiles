@@ -1,5 +1,5 @@
 " First turn on pathogen
-call pathogen#infect('$ZSH/bundle')
+call pathogen#infect('~/.dotfiles/bundle')
 
 set nocompatible
 syntax on
