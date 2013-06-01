@@ -1,12 +1,12 @@
 [user]
-	name = Todd Lunter
-	email = tlunter@gmail.com
+    name = Todd Lunter
+    email = tlunter@gmail.com
 [push]
-    default = tracking
+    default = simple
 [github]
     user = tlunter
 [http]
-	sslVerify = false
+    sslVerify = false
 [core]
-	editor = gvim -f
+    editor = gvim -f
     excludesfile = ~/.gitignore
