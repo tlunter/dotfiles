@@ -19,17 +19,15 @@ myLayouts = Full ||| tall ||| Mirror tall ||| Grid
                 delta     = 3/100
 
 main =
-    do a <- statusBar botBar botPP toggleStrutsKey myConfig
-       b <- statusBar topBar topPP toggleStrutsKey a
-       xmonad b
+    do spawn $ botBar
+       a <- statusBar topBar topPP toggleStrutsKey myConfig
+       xmonad $ a
 
 topBar = "xmobar"
 botBar = "xmobar /home/tlunter/.xmobar-botrc"
 
 topPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 80
                  , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
-
-botPP = defaultPP
 
 myXPConfig = greenXPConfig { position = Top }
 
@@ -65,5 +63,5 @@ myConfig = defaultConfig
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 4-" )
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 4+" )
         , ("<XF86AudioMute>",        spawn "amixer set Master toggle" )
-        , ("M-S-x",                  shellPrompt myXPConfig) ]
+        , ("M-p",                  shellPrompt myXPConfig) ]
 
