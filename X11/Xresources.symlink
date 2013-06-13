@@ -1,10 +1,11 @@
-*font:             xft:Dejavu Sans Mono:size=10
-*wideChars:        true
-*locale:           true
-*utf8:             1
-*vt100Graphics:    true
-*urlLauncher:      /usr/bin/chromium
+*font:                  xft:Dejavu Sans Mono:size=10
+*wideChars:             true
+*locale:                true
+*utf8:                  1
+*vt100Graphics:         true
+*urlLauncher:           /usr/bin/chromium
 URxvt.perl-ext-common:  default,tabbed
+URxvt.modifier:         alt
 
 ! Solarized color scheme for the X Window System
 !
@@ -53,62 +54,62 @@ URxvt.perl-ext-common:  default,tabbed
 ! URxvt*background:            S_base03
 
 
-! *background:              S_base03
-! *foreground:              S_base0
-! *fading:                  40
-! *fadeColor:               S_base03
-! *cursorColor:             S_base1
-! *pointerColorBackground:  S_base01
-! *pointerColorForeground:  S_base1
-! 
-! *color0:                  S_base02
-! *color1:                  S_red
-! *color2:                  S_green
-! *color3:                  S_yellow
-! *color4:                  S_blue
-! *color5:                  S_magenta
-! *color6:                  S_cyan
-! *color7:                  S_base2
-! *color9:                  S_orange
-! *color8:                  S_base03
-! *color10:                 S_base01
-! *color11:                 S_base00
-! *color12:                 S_base0
-! *color13:                 S_violet
-! *color14:                 S_base1
-! *color15:                 S_base3
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
 
 
 ! Colors
-*background:                    #262626
-*foreground:                    #c2c2b0
-*fading:                        40
-*fadeColor:                     #262626
-*cursorColor:                   #ffffff
-*pointerColorBackground:        #80a65b
-*pointerColorForeground:        #ffffff
-
-! Black + DarkGrey
-*color0:                        #262626
-*color8:                        #73675b
-! DarkRed + Red
-*color1:                        #a64211
-*color9:                        #cc5214
-! DarkGreen + Green
-*color2:                        #638046
-*color10:                       #80a65b
-! DarkYellow + Yellow
-*color3:                        #bf8c25
-*color11:                       #e6a82d
-! DarkBlue + Blue
-*color4:                        #4d6d99
-*color12:                       #6088bf
-! DarkMangenta + Mangenta
-*color5:                        #996b89
-*color13:                       #bf86ac
-! DarkCyan + Cyan
-*color6:                        #6b8e99
-*color14:                       #86b1bf
-! LightGrey + White
-*color7:                        #998a7a
-*color15:                       #c2c2b0
+! *background:                    #262626
+! *foreground:                    #c2c2b0
+! *fading:                        40
+! *fadeColor:                     #262626
+! *cursorColor:                   #ffffff
+! *pointerColorBackground:        #80a65b
+! *pointerColorForeground:        #ffffff
+! 
+! ! Black + DarkGrey
+! *color0:                        #262626
+! *color8:                        #73675b
+! ! DarkRed + Red
+! *color1:                        #a64211
+! *color9:                        #cc5214
+! ! DarkGreen + Green
+! *color2:                        #638046
+! *color10:                       #80a65b
+! ! DarkYellow + Yellow
+! *color3:                        #bf8c25
+! *color11:                       #e6a82d
+! ! DarkBlue + Blue
+! *color4:                        #4d6d99
+! *color12:                       #6088bf
+! ! DarkMangenta + Mangenta
+! *color5:                        #996b89
+! *color13:                       #bf86ac
+! ! DarkCyan + Cyan
+! *color6:                        #6b8e99
+! *color14:                       #86b1bf
+! ! LightGrey + White
+! *color7:                        #998a7a
+! *color15:                       #c2c2b0
