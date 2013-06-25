@@ -35,10 +35,10 @@ set smartcase
 set laststatus=2
 
 " Color scheme
-set background=
-colorscheme hojberg
+set background=dark
+colorscheme solarized
 if has('gui_running')
-    set guifont=DejaVu\ Sans\ Mono\ 12
+    set guifont=DejaVu\ Sans\ Mono\ 14
 endif
 
 let mapleader=','
@@ -51,6 +51,12 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set file
 
 " add json syntax highlighting
 au BufRead,BufNewFile *.json set filetype=javascript
+
+" add haskell syntax highlighting
+au BufRead,BufNewFile *.hsc  set filetype=haskell
+
+" add zsh syntax highlighting
+au BufRead,BufNewFile *.zsh* set filetype=zsh
 
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
@@ -115,6 +121,7 @@ noremap <CR> :noh<CR><CR>
 set mouse=a
 set encoding=utf8
 set scrolloff=10
+let $TERM="xterm"
 imap jj <Esc>
 
 map <C-h> :bfirst<CR>
