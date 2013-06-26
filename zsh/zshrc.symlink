@@ -14,7 +14,7 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git virtualenvwrapper virtualenv python pip rails3 \
-         rbenv ssh-agent systemd celery)
+         rbenv ssh-agent systemd celery tlunter)
 
 source $ZSH/oh-my-zsh.sh
 
