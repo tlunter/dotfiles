@@ -21,10 +21,13 @@ function gpi() {
   echo "➜ $(parse_git_dirty) on $branch_color${ref#refs/heads/}%{$NOCOLOR%}"
 }
 
-local git='$(gpi)'
+local git='$(gpi)$(git_remote_status)'
 
 ZSH_THEME_GIT_PROMPT_CLEAN="✔"
 ZSH_THEME_GIT_PROMPT_DIRTY="✘"
+ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" needs to be pushed"
+ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" needs to be pulled"
+ZSH_THEME_GIT_PROMPT_DIVERED_REMOTE=" has diverged"
 
 # rootshell gets another prompt sign
 local PR_SIGN=$NOCOLOR

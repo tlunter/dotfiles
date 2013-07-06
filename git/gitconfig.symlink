@@ -10,3 +10,8 @@
 [core]
     editor = gvim -f
     excludesfile = ~/.gitignore
+[alias]
+	l = log --graph
+	c = commit --verbose
+[rebase]
+	pull = true
