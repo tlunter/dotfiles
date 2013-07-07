@@ -13,10 +13,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenvwrapper virtualenv python pip rails3 \
-         rbenv ssh-agent systemd celery tlunter)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(git tlunter)
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -24,6 +21,8 @@ if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
+
+source $ZSH/oh-my-zsh.sh
 
 if [[ -a ~/.pystartup ]]; then
     export PYTHONSTARTUP=~/.pystartup

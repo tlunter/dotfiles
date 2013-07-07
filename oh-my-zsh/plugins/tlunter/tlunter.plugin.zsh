@@ -1,6 +1,8 @@
 alias reload!=" source ~/.zshrc"
 
-alias p=' ps aux | grep'
+function p {
+    ps aux | grep $1 | grep -v grep
+}
 alias ls='ls -lhp'
 
 # Removes the terrible .DS_Store files from the Mac OS X operating system
