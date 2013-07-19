@@ -1,5 +1,18 @@
-" First turn on pathogen
-call pathogen#infect('~/.dotfiles/bundle')
+" First turn on Vundle
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle "flazz/vim-colorschemes"
+Bundle "airblade/vim-gitgutter"
+Bundle "kien/ctrlp.vim"
+Bundle "fholgado/minibufexpl.vim"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "groenewege/vim-less"
+Bundle "tpope/vim-rails.git"
+Bundle "tpope/vim-fugitive"
+Bundle "wikitopian/hardmode"
+Bundle "scrooloose/syntastic"
+Bundle "ervandew/supertab"
 
 set nocompatible
 syntax on
