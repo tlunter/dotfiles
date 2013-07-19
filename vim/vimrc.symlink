@@ -18,7 +18,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set linespace=2
-let &colorcolumn=join(range(81,999),",")
+" let &colorcolumn=join(range(81,999),",")
 set expandtab
 
 " Undo stuff
@@ -36,9 +36,16 @@ set laststatus=2
 
 " Color scheme
 set background=dark
-colorscheme solarized
+colorscheme hojberg
 if has('gui_running')
-    set guifont=DejaVu\ Sans\ Mono\ 14
+    let os=substitute(system('uname'), '\n', '', '')
+    if os == "Darwin"
+        set guifont=Inconsolata-dz:h14
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 14
+    endif
+else
+    set t_Co=256 
 endif
 
 let mapleader=','
@@ -68,6 +75,13 @@ au FileType mkd     setlocal nofoldenable
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set softtabstop=4 tabstop=4 shiftwidth=4
+
+" make HTML use 2 spaces
+au BufRead,BufNewFile *.erb set filetype=html
+au FileType html    set softtabstop=2 tabstop=2 shiftwidth=2
+
+" make JS use 2 spaces
+au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
 
 " make Ruby use 2 spaces
 au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
@@ -118,13 +132,16 @@ map <Leader>ws :w !sudo tee %
 " Cancel highlighting by hitting enter
 noremap <CR> :noh<CR><CR>
 
+set noerrorbells visualbell t_vb=
 set mouse=a
 set encoding=utf8
 set scrolloff=10
 let $TERM="xterm"
-imap jj <Esc>
+imap jk <Esc>
 
 map <C-h> :bfirst<CR>
 map <C-j> :bnext<CR>
 map <C-k> :bprev<CR>
 map <C-l> :blast<CR>
+
+set tag=./tags;

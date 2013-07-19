@@ -8,10 +8,11 @@
 [http]
     sslVerify = false
 [core]
-    editor = gvim -f
+    editor = vim
     excludesfile = ~/.gitignore
 [alias]
 	l = log --graph
 	c = commit --verbose
+    d = diff --color
 [rebase]
 	pull = true
