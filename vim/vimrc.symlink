@@ -1,6 +1,12 @@
+" load the plugin and indent settings for the detected filetype
+set nocompatible
+filetype off
+
 " First turn on Vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
+
+Bundle 'gmarik/vundle'
 
 Bundle "flazz/vim-colorschemes"
 Bundle "airblade/vim-gitgutter"
@@ -14,7 +20,8 @@ Bundle "wikitopian/hardmode"
 Bundle "scrooloose/syntastic"
 Bundle "ervandew/supertab"
 
-set nocompatible
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
 syntax on
 set number
 set ruler
@@ -104,9 +111,6 @@ au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
 
 " Completion list
 set wildmode=longest,list:longest
