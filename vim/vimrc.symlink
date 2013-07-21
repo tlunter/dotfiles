@@ -96,6 +96,9 @@ au FileType html    set softtabstop=2 tabstop=2 shiftwidth=2
 " make JS use 2 spaces
 au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
 
+" make LESS use 2 spaces
+au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
+
 " make Ruby use 2 spaces
 au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
 
