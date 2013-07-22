@@ -55,8 +55,6 @@ set smartcase
 set laststatus=2
 
 " Color scheme
-set background=dark
-colorscheme hojberg
 if has('gui_running')
     let os=substitute(system('uname'), '\n', '', '')
     if os == "Darwin"
@@ -67,6 +65,8 @@ if has('gui_running')
 else
     set t_Co=256 
 endif
+set background=dark
+colorscheme hojberg
 
 let mapleader=','
 
