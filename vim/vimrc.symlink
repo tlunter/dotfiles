@@ -19,6 +19,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "wikitopian/hardmode"
 Bundle "scrooloose/syntastic"
 Bundle "ervandew/supertab"
+Bundle "bling/vim-airline"
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -67,6 +68,7 @@ else
 endif
 set background=dark
 colorscheme hojberg
+let g:airline_powerline_fonts = 1
 
 let mapleader=','
 
