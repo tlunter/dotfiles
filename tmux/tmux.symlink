@@ -1,0 +1,28 @@
+unbind C-b
+set -g prefix C-x
+
+# -- Settings -----------------------------------------------------------------
+# improve colors
+set -g default-terminal 'screen-256color'
+ 
+# start window numbers at 1 to match keyboard order with tmux window order
+ set -g base-index 1
+  
+# renumber windows sequentially after closing any of them
+set -g renumber-windows on
+
+# increase scrollback lines
+set -g history-limit 10000
+
+set -s escape-time 1
+setw -g pane-base-index 1
+
+# -- Statusbar ----------------------------------------------------------------
+set -g status-bg '#000000'
+set -g status-fg '#555555'
+set-window-option -g window-status-current-format '#[fg=#ffffff,bold]#I:#W#[default]'
+ 
+set-option -g status-left-length 20
+set -g status-left '#[fg=#000000,bg=#888888] #S #[fg=#888888,bg=#000000]#[default]'
+set -g status-right '#[fg=#555555]%b %m, %Y - #[fg=#aaaaaa,bold]%H:%M#[default]'
+  
