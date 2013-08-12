@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle "flazz/vim-colorschemes"
 Bundle "airblade/vim-gitgutter"
+Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle "fholgado/minibufexpl.vim"
 Bundle "Lokaltog/vim-easymotion"
