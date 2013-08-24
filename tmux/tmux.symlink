@@ -1,6 +1,10 @@
 unbind C-b
 set -g prefix C-x
 
+bind -r j next
+bind -r k prev
+bind r source-file ~/.tmux.conf
+
 # -- Settings -----------------------------------------------------------------
 # improve colors
 set -g default-terminal 'screen-256color'

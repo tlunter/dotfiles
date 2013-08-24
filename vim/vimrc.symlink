@@ -185,3 +185,5 @@ map <C-l> :blast<CR>
 set term=screen-256color
 
 set tag=./tags;
+
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
