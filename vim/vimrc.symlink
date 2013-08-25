@@ -6,7 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle "gmarik/vundle"
 
 Bundle "flazz/vim-colorschemes"
 Bundle "airblade/vim-gitgutter"
@@ -23,7 +23,8 @@ Bundle "ervandew/supertab"
 Bundle "bling/vim-airline"
 Bundle "tpope/vim-dispatch"
 Bundle "mileszs/ack.vim"
-Bundle 'kbarrette/ctrlp-burkematcher.vim'
+Bundle "kbarrette/ctrlp-burkematcher.vim"
+Bundle "scrooloose/nerdtree"
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -185,5 +186,3 @@ map <C-l> :blast<CR>
 set term=screen-256color
 
 set tag=./tags;
-
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
