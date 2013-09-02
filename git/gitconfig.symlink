@@ -11,10 +11,13 @@
     editor = vim
     excludesfile = ~/.gitignore
 [alias]
-	l = log --graph
-	c = commit --verbose
-    d = diff --color
+    l = log --graph
+    c = commit --verbose
+    d = diff
+    s = status
     temporary-amnesia = update-index --skip-worktree
     remember = update-index --no-skip-worktree
 [rebase]
-	pull = true
+    pull = true
+[color]
+    ui = true

@@ -183,6 +183,8 @@ map <C-j> :bnext<CR>
 map <C-k> :bprev<CR>
 map <C-l> :blast<CR>
 
+map <Leader>nt :NERDTreeToggle<CR>
+
 set term=screen-256color
 
 set tag=./tags;
