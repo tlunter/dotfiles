@@ -147,6 +147,7 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
 
+noremap ; :
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
 map <Leader>pf <Esc>:pyfile %<CR>
