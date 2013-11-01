@@ -1,4 +1,6 @@
 alias reload!=" source ~/.zshrc"
+alias be="bundle exec"
+alias bi="bundle install"
 
 function p {
     ps aux | grep $1 | grep -v grep
@@ -22,6 +24,11 @@ setopt TRANSIENT_RPROMPT
 
 # If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends.
 setopt COMPLETE_IN_WORD
+
+# Don't make me double enter
+unsetopt HIST_VERIFY
+
+zstyle ':completion:*' rehash true
 
 autoload -U zmv
 
