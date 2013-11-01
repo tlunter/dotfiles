@@ -23,6 +23,7 @@ Bundle "ervandew/supertab"
 Bundle "bling/vim-airline"
 Bundle "tpope/vim-dispatch"
 Bundle "mileszs/ack.vim"
+Bundle 'rking/ag.vim'
 Bundle "kbarrette/ctrlp-burkematcher.vim"
 Bundle "scrooloose/nerdtree"
 
