@@ -7,6 +7,7 @@
 URxvt.perl-ext-common:  default
 URxvt.modifier:         alt
 URxvt.termName:         xterm-256color
+URxvt*altSendsEscape:   true
 
 ! Solarized color scheme for the X Window System
 !
