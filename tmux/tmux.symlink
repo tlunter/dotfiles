@@ -14,7 +14,6 @@ bind r source-file ~/.tmux.conf
 # -- Settings -----------------------------------------------------------------
 # improve colors
 set -g default-terminal 'screen-256color'
-set -g default-command /bin/zsh
  
 # start window numbers at 1 to match keyboard order with tmux window order
  set -g base-index 1

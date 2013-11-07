@@ -14,6 +14,7 @@ files = {
   'X11/xmobar-bottom.symlink' => '.xmobar-botrc',
   'X11/xmobar.symlink' => '.xmobarrc',
   'X11/xmonad.symlink' => '.xmonad/xmonad.hs',
+  'zsh/zshenv.symlink' => '.zshenv',
   'zsh/zshrc.symlink' => '.zshrc'
 }
 
