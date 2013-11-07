@@ -32,5 +32,15 @@ zstyle ':completion:*' rehash true
 
 autoload -U zmv
 
+bindkey -v
+bindkey jk vi-cmd-mode
+
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^P" history-search-backward
+
+# Use incremental search
+bindkey "^R" history-incremental-search-backward
+
 # Sets the default editor to Vim
 EDITOR=/usr/bin/vim

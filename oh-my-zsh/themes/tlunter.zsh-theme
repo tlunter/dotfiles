@@ -1,5 +1,28 @@
 autoload add-zsh-hook
 
+vim_ins_mode="%{$fg[cyan]%} I %{$reset_color%}"
+vim_cmd_mode="%{$fg[green]%} C %{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
+# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
+# Thanks Ron! (see comments)
+function TRAPINT() {
+  vim_mode=$vim_ins_mode
+  return $(( 128 + $1 ))
+}
+
 local TERMWIDTH
 (( TERMWIDTH = ${COLUMNS} - 1 ))
 local NOCOLOR="%{$terminfo[sgr0]%}"
@@ -31,7 +54,7 @@ ZSH_THEME_GIT_PROMPT_DIVERED_REMOTE=" has diverged"
 
 # rootshell gets another prompt sign
 local PR_SIGN=$NOCOLOR
-PR_SIGN="%m %{$fg[red]%}∴$NOCOLOR"
+PR_SIGN="%m"
 
 # http://unix.stackexchange.com/questions/1022/is-it-possible-to-display-stuff-below-the-prompt-at-a-prompt
 terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
@@ -41,6 +64,8 @@ PROMPT="$vc_status"
 RPROMPT='$NOCOLOR%d$(get_virtualenv_info)'
 
 PROMPT+=$PR_SIGN                 # the user sign
+PROMPT+='${vim_mode}'            # add vim mode
+PROMPT+="%{$fg[red]%}∴$NOCOLOR"
 PROMPT+=" "                      # an additional space
 
 eraseSecondLine () {

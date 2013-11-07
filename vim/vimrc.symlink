@@ -12,7 +12,6 @@ Bundle "flazz/vim-colorschemes"
 Bundle "airblade/vim-gitgutter"
 Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
-Bundle "fholgado/minibufexpl.vim"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "groenewege/vim-less"
 Bundle "tpope/vim-rails.git"
@@ -180,10 +179,7 @@ set encoding=utf8
 set scrolloff=10
 imap jk <Esc>
 
-map <C-h> :bfirst<CR>
-map <C-j> :bnext<CR>
-map <C-k> :bprev<CR>
-map <C-l> :blast<CR>
+nnoremap <C-L> :CtrlPBuffer<CR>
 
 map <Leader>nt :NERDTreeToggle<CR>
 
