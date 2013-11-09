@@ -118,7 +118,7 @@ call s:HL('NonText',    'deepgravel', 'bg')
 call s:HL('SpecialKey', 'deepgravel', 'bg')
 call s:HL('Visual',    'tardis',  'deepergravel')
 call s:HL('VisualNOS', 'snow',  'tardis')
-call s:HL('Search',    'coal', 'tardis', 'bold')
+call s:HL('Search',    'coal', 'tardis', 'none')
 call s:HL('IncSearch', 'coal', 'tardis', 'bold')
 call s:HL('Underlined', 'fg', '', 'underline')
 call s:HL('StatusLine',   'coal', 'lime', 'bold')
@@ -134,7 +134,7 @@ call s:HL('Question',   'dirtyblonde', '',   'bold')
 call s:HL('WarningMsg', 'taffy',       '',   'bold')
 
 " Gutter
-call s:HL('LineNr',     'blackestgravel')
+call s:HL('LineNr',     'lightgravel')
 call s:HL('SignColumn', '',             'coal')
 call s:HL('FoldColumn', 'mediumgravel', 'coal')
 
@@ -150,7 +150,7 @@ call s:HL('ExtraWhitespace',  '', 'taffy',    'none')
 call s:HL('Special', 'orange')
 
 " Comments are slightly brighter than folds, to make 'headers' easier to see.
-call s:HL('Comment',        'blackestgravel')
+call s:HL('Comment',        'lightgravel')
 call s:HL('Todo',           'coal', 'paleyellow', 'bold')
 call s:HL('SpecialComment', 'brightgravel', 'bg', 'bold')
 
