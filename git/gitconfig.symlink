@@ -17,6 +17,8 @@
     s = status
     temporary-amnesia = update-index --skip-worktree
     remember = update-index --no-skip-worktree
+[merge]
+    ff = false
 [rebase]
     pull = true
 [color]

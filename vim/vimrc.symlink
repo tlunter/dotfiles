@@ -16,15 +16,17 @@ Bundle "Lokaltog/vim-easymotion"
 Bundle "groenewege/vim-less"
 Bundle "tpope/vim-rails.git"
 Bundle "tpope/vim-fugitive"
+Bundle "tpope/vim-unimpaired"
+Bundle "Valloric/YouCompleteMe"
 Bundle "wikitopian/hardmode"
 Bundle "scrooloose/syntastic"
-Bundle "ervandew/supertab"
 Bundle "bling/vim-airline"
 Bundle "tpope/vim-dispatch"
 Bundle "mileszs/ack.vim"
 Bundle 'rking/ag.vim'
 Bundle "kbarrette/ctrlp-burkematcher.vim"
 Bundle "scrooloose/nerdtree"
+Bundle "itchyny/calendar.vim"
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -44,8 +46,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set linespace=2
-" let &colorcolumn=join(range(81,999),",")
 set expandtab
+" 80 character highlighting
+" let &colorcolumn=join(range(81,999),",")
 
 " Undo stuff
 set undodir=~/.vim/backup
@@ -57,7 +60,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-let g:ctrlp_working_path_mode = 0  " Use Vim's current working directory as the search root
+" Use Vim's current working directory as the search root
+let g:ctrlp_working_path_mode = 0
 if executable('ag')
     " Use Ag over Grep
     set grepprg=ag\ --nogroup\ --nocolor
@@ -68,6 +72,9 @@ if executable('ag')
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
 endif
+
+" Open CtrlP for Buffers
+nnoremap <C-L> :CtrlPBuffer<CR>
 
 " Status bar
 set laststatus=2
@@ -87,8 +94,6 @@ else
 endif
 set background=dark
 colorscheme hojberg
-
-let mapleader=','
 
 " make uses real tabs
 au FileType make set noexpandtab
@@ -147,42 +152,44 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
 
+" Add Google Stuff
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
+" Don't like using shift or \
 noremap ; :
+let mapleader=','
+
+" vimrc mappings
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
-map <Leader>pf <Esc>:pyfile %<CR>
+
+" EasyMotion over regular f/F
 map f <Leader><Leader>f
 map F <Leader><Leader>F
-" Django specific macros
-if filereadable('manage.py')
-    map <Leader>db :! ./manage.py dbshell
-    map <Leader>cs :! ./manage.py collectstatic
-    map <Leader>shell :! ./manage.py shell
-    map <Leader>test :! ./manage.py test 
-endif
 
-" Restart Apache Macro
-if hostname() == "greyjoy"
-    map <Leader>reap :! sudo systemctl restart httpd.service
-    map <F5> :CtrlPClearCache<CR>
-else
-    map <Leader>reap :! sudo apache2ctl restart
-endif
 " A work around when vim isn't open with sudo
 map <Leader>ws :w !sudo tee %
+
 " Cancel highlighting by hitting enter
 noremap <CR> :noh<CR><CR>
 
+" No annoying noises
 set noerrorbells visualbell t_vb=
+
+" Enable mouse
 set mouse=a
+
 set encoding=utf8
+
+" Scroll offset
 set scrolloff=10
+
+" Escape easier with jk
 imap jk <Esc>
 
-nnoremap <C-L> :CtrlPBuffer<CR>
-
+" Opens NerdTree
 map <Leader>nt :NERDTreeToggle<CR>
 
+" 256 colors with tmux
 set term=screen-256color
-
-set tag=./tags;
