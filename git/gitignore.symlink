@@ -1,5 +1,6 @@
 *.swp
 *.pyc
+*.class
 .netrwhist
 .DS_Store
 binstubs/*
