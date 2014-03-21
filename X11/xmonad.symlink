@@ -23,8 +23,8 @@ main =
        a <- statusBar topBar topPP toggleStrutsKey myConfig
        xmonad $ a
 
-topBar = "xmobar"
-botBar = "xmobar /home/tlunter/.xmobar-botrc"
+topBar = "xmobar -x 0"
+botBar = "xmobar -x 0 /home/tlunter/.xmobar-botrc"
 
 topPP = xmobarPP { ppTitle   = xmobarColor "green" "" . shorten 80
                  , ppCurrent = xmobarColor "red"   "" . wrap "[" "]" }
@@ -42,26 +42,28 @@ myConfig = defaultConfig
         , borderWidth     = 1
         , modMask         = mod4Mask }
         `additionalKeysP`
-        [ ("S-<Print>",              spawn "scrot")
-        , ("C-<Print>",              spawn "sleep 0.2; scrot -s")
-        , ("M-x t",                  spawn "urxvt")
-        , ("M-x M-t",                spawn "urxvt")
-        , ("M-x c",                  spawn "google-chrome-stable")
-        , ("M-x M-c",                spawn "google-chrome-stable")
-        , ("M-x v",                  spawn "gvim") 
-        , ("M-x M-v",                spawn "gvim")
-        , ("M-x s",                  spawn "sudo pm-suspend")
-        , ("M-x M-s",                spawn "sudo pm-suspend")
-        , ("M-x e",                  spawn "evince")
-        , ("M-x M-e",                spawn "evince")
-        , ("M-x y",                  spawn "qsynergy")
-        , ("M-x M-y",                spawn "qsynergy")
-        , ("M-x b",                  spawn "virtualbox")
-        , ("M-x M-b",                spawn "virtualbox")
-        , ("M-x l",                  spawn "libreoffice")
-        , ("M-x M-l",                spawn "libreoffice")
-        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 4-" )
-        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 4+" )
-        , ("<XF86AudioMute>",        spawn "amixer set Master toggle" )
-        , ("M-p",                  shellPrompt myXPConfig) ]
+        [ ("S-<Print>",               spawn "scrot")
+        , ("C-<Print>",               spawn "sleep 0.2; scrot -s")
+        , ("M-x t",                   spawn "urxvt")
+        , ("M-x M-t",                 spawn "urxvt")
+        , ("M-x c",                   spawn "google-chrome-stable")
+        , ("M-x M-c",                 spawn "google-chrome-stable")
+        , ("M-x v",                   spawn "gvim")
+        , ("M-x M-v",                 spawn "gvim")
+        , ("M-x s",                   spawn "sudo pm-suspend")
+        , ("M-x M-s",                 spawn "sudo pm-suspend")
+        , ("M-x e",                   spawn "evince")
+        , ("M-x M-e",                 spawn "evince")
+        , ("M-x y",                   spawn "qsynergy")
+        , ("M-x M-y",                 spawn "qsynergy")
+        , ("M-x b",                   spawn "virtualbox")
+        , ("M-x M-b",                 spawn "virtualbox")
+        , ("M-x l",                   spawn "libreoffice")
+        , ("M-x M-l",                 spawn "libreoffice")
+        , ("<XF86AudioLowerVolume>",  spawn "amixer set Master 1640-" )
+        , ("<XF86AudioRaiseVolume>",  spawn "amixer set Master 1640+" )
+        , ("<XF86AudioMute>",         spawn "amixer set Master toggle" )
+        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10" )
+        , ("<XF86MonBrightnessUp>",   spawn "xbacklight -inc 10" )
+        , ("M-p",                     shellPrompt myXPConfig) ]
 
