@@ -5,8 +5,8 @@ Config { font = "xft:Monospace:pixelsize=11"
        , lowerOnStart = True
        , commands     = [ Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                         , Run Memory ["-t","Mem: <usedratio>%"] 10
-                        , Run Wireless "enp0s18f2u2" [ "-t", "<essid>" ] 50
-                        , Run Network "enp0s18f2u2" [ "-S", "true"
+                        , Run Wireless "wlp0s18f2u2" [ "-t", "<essid>" ] 50
+                        , Run Network "wlp0s18f2u2" [ "-S", "true"
                                                , "-t", "Down: <rx> Up: <tx>"
                                                , "-L", "100", "-H", "1000"
                                                , "-n", "green", "-h", "red"
@@ -14,5 +14,5 @@ Config { font = "xft:Monospace:pixelsize=11"
                         , Run Date "%a %b %_d %l:%M" "date" 50 ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = "%multicpu% | %memory% } <fc=#ee9a00>%date%</fc> { %enp0s18f2u2wi% %enp0s18f2u2%"
+       , template     = "%multicpu% | %memory% } <fc=#ee9a00>%date%</fc> { %wlp0s18f2u2wi% %wlp0s18f2u2%"
        }
