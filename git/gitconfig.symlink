@@ -14,7 +14,7 @@
     l = log --graph
     c = commit --verbose
     d = diff
-    s = status
+    s = status -sb
     temporary-amnesia = update-index --skip-worktree
     remember = update-index --no-skip-worktree
 [rebase]

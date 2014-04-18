@@ -13,6 +13,8 @@ twmnd &
 
 power_warning &
 
+start-pulseaudio-x11
+
 source ~/.zshrc
 
 exec xmonad
