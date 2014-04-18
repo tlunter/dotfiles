@@ -18,15 +18,12 @@ Bundle "tpope/vim-rails.git"
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-unimpaired"
 Bundle "Valloric/YouCompleteMe"
-Bundle "wikitopian/hardmode"
 Bundle "scrooloose/syntastic"
 Bundle "bling/vim-airline"
 Bundle "tpope/vim-dispatch"
-Bundle "mileszs/ack.vim"
 Bundle 'rking/ag.vim'
-Bundle "kbarrette/ctrlp-burkematcher.vim"
 Bundle "scrooloose/nerdtree"
-Bundle "itchyny/calendar.vim"
+Bundle 'mustache/vim-mustache-handlebars'
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
