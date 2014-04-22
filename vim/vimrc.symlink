@@ -57,6 +57,10 @@ set incsearch
 set ignorecase
 set smartcase
 
+" YCM stuff
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
+
 " Use Vim's current working directory as the search root
 let g:ctrlp_working_path_mode = 0
 if executable('ag')
@@ -148,10 +152,6 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set complete=.,b,u,]
-
-" Add Google Stuff
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
 
 " Don't like using shift or \
 noremap ; :
