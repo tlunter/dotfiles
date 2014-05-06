@@ -35,4 +35,7 @@ set-window-option -g window-status-current-format '#[fg=#ffffff,bold]#I:#W#[defa
 set-option -g status-left-length 20
 set -g status-left '#[fg=#000000,bg=#ffffff] #S #[fg=#ffffff,bg=#000000]#[default]'
 set -g status-right '#[fg=#555555]%b %m, %Y - #[fg=#aaaaaa,bold]%H:%M#[default]'
-  
+
+bind c new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
