@@ -24,14 +24,19 @@ Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mustache/vim-mustache-handlebars'
 
+call vundle#end()
+
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
 syntax on
-set number
 set ruler
 set showcmd
 set showmode
 set hidden
+
+" Line numbering
+set number
+set relativenumber
 
 " Whitespace stuff
 set nowrap
