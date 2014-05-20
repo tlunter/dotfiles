@@ -23,6 +23,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 
