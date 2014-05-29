@@ -10,6 +10,9 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    autocrlf = false
+    safecrlf = true
+    eol      = lf
 [alias]
     l = log --graph
     c = commit --verbose
