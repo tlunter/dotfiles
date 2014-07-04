@@ -1,7 +1,7 @@
 Config { font = "xft:Monospace:pixelsize=11"
        , bgColor      = "black"
        , fgColor      = "grey"
-       , position     = TopW L 97
+       , position     = TopW L 95
        , lowerOnStart = True
        , commands     = [ Run Battery [ "-t", "<acstatus>"
                                       , "-L", "10", "-H", "80"
