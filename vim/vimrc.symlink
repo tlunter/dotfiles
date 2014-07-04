@@ -75,10 +75,12 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -fl --nocolor -g ""'
 
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
+
+    let g:agprg="ag --follow --nogroup --nocolor --column"
 endif
 
 " Open CtrlP for Buffers
@@ -142,6 +144,10 @@ au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
 " make Ruby use 2 spaces
 au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
 
+au BufNewFile,BufRead *.mod  set filetype=ampl
+au BufNewFile,BufRead *.dat  set filetype=ampl
+au BufNewFile,BufRead *.ampl set filetype=ampl
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -167,6 +173,10 @@ let mapleader=','
 " vimrc mappings
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
+
+" copy/paste mappings
+map <Leader>y "+y
+map <Leader>p "+p
 
 " EasyMotion over regular f/F
 map f <Leader><Leader>f
