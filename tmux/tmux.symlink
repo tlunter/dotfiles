@@ -6,7 +6,7 @@ set-window-option -g mode-keys vi
 bind -r j next
 bind -r k prev
 # pane movement
-bind-key s command-prompt -p "join pane from:"  "join-pane -s '%%'"
+# bind-key s command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key t command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 bind r source-file ~/.tmux.conf
