@@ -39,3 +39,14 @@ set -g status-right '#[fg=#555555]%b %d, %Y - #[fg=#aaaaaa,bold]%H:%M#[default]'
 bind c new-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 bind '"' split-window -c "#{pane_current_path}"
+
+# List of plugins
+# Supports `github_username/repo` or full git URLs
+set -g @tpm_plugins "              \
+  tmux-plugins/tpm                 \
+  tmux-plugins/tmux-sensible       \
+  tmux-plugins/tmux-resurrect      \
+"
+
+# initializes TMUX plugin manager
+run-shell ~/.tmux/plugins/tpm/tpm
