@@ -89,6 +89,7 @@ nnoremap <C-L> :CtrlPBuffer<CR>
 " Status bar
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 set noshowmode
 
 " Color scheme
@@ -144,12 +145,17 @@ au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
 " make Ruby use 2 spaces
 au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
 
+au BufRead,BufNewFile *.yml.erb set filetype=yaml
+au BufRead,BufNewFile *.sh.erb set filetype=sh
 au BufNewFile,BufRead *.mod  set filetype=ampl
 au BufNewFile,BufRead *.dat  set filetype=ampl
 au BufNewFile,BufRead *.ampl set filetype=ampl
 
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+" Copy from and paste to the system clipboard
+set clipboard=unnamed
 
 " Completion list
 set wildmode=longest,list:longest
@@ -179,8 +185,8 @@ map <Leader>y "+y
 map <Leader>p "+p
 
 " EasyMotion over regular f/F
-map f <Leader><Leader>f
-map F <Leader><Leader>F
+" map f <Leader><Leader>f
+" map F <Leader><Leader>F
 
 " A work around when vim isn't open with sudo
 map <Leader>ws :w !sudo tee %
@@ -198,6 +204,12 @@ set encoding=utf8
 
 " Scroll offset
 set scrolloff=10
+
+" Highlight extraneous whitespace
+autocmd BufWinEnter * match Error /\s\+$/
+autocmd InsertEnter * match Error /\s\+\%#\@<!$/
+autocmd InsertLeave * match Error /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Escape easier with jk
 imap jk <Esc>
