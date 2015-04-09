@@ -8,8 +8,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-markdown'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'groenewege/vim-less'
@@ -26,6 +25,13 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'Keithbsmiley/swift.vim'
+Plugin 'janko-m/vim-test'
+Plugin 'kbarrette/gutterballet'
+Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()
 
@@ -39,7 +45,6 @@ set hidden
 
 " Line numbering
 set number
-set relativenumber
 
 " Whitespace stuff
 set nowrap
@@ -58,6 +63,8 @@ set expandtab
 set undodir=~/.vim/backup
 set undofile
 
+set noswapfile
+
 " Searching
 set hlsearch
 set incsearch
@@ -67,6 +74,7 @@ set smartcase
 " YCM stuff
 let g:ycm_add_preview_to_completeopt = 0
 set completeopt-=preview
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 " Use Vim's current working directory as the search root
 let g:ctrlp_working_path_mode = 0
@@ -86,6 +94,9 @@ endif
 " Open CtrlP for Buffers
 nnoremap <C-L> :CtrlPBuffer<CR>
 
+let g:ctrlp_extensions = ['funky']
+nnoremap <C-F> :CtrlPFunky<Cr>
+
 " Status bar
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -101,7 +112,7 @@ if has('gui_running')
         set guifont=DejaVu\ Sans\ Mono\ 14
     endif
 else
-    set t_Co=256 
+    set t_Co=256
 endif
 set background=dark
 colorscheme hojberg
@@ -180,10 +191,6 @@ let mapleader=','
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
 
-" copy/paste mappings
-map <Leader>y "+y
-map <Leader>p "+p
-
 " EasyMotion over regular f/F
 " map f <Leader><Leader>f
 " map F <Leader><Leader>F
@@ -219,3 +226,9 @@ map <Leader>nt :NERDTreeToggle<CR>
 
 " 256 colors with tmux
 set term=screen-256color
+
+" Markdown languages for fenced blocks
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+" Syntastic specific
+let g:syntastic_swift_checkers = []

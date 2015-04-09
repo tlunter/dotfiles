@@ -9,6 +9,14 @@ bind -r k prev
 # bind-key s command-prompt -p "join pane from:"  "join-pane -s '%%'"
 bind-key t command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
+# Vim-like copy/paste
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
 bind r source-file ~/.tmux.conf
 
 # -- Settings -----------------------------------------------------------------
@@ -22,7 +30,7 @@ set -g default-terminal 'screen-256color'
 set -g renumber-windows on
 
 # increase scrollback lines
-set -g history-limit 10000
+set -g history-limit 10000000
 
 set -sg escape-time 0
 setw -g pane-base-index 1
