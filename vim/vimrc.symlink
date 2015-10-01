@@ -9,31 +9,32 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-markdown'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-dispatch'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'ajh17/Spacegray.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'Keithbsmiley/swift.vim'
-Plugin 'janko-m/vim-test'
 Plugin 'kbarrette/gutterballet'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'luochen1990/rainbow'
+Plugin 'tpope/vim-rsi'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
+
+runtime macros/matchit.vim
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -90,6 +91,7 @@ if executable('ag')
 
     let g:agprg="ag --follow --nogroup --nocolor --column"
 endif
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Open CtrlP for Buffers
 nnoremap <C-L> :CtrlPBuffer<CR>
@@ -101,7 +103,7 @@ nnoremap <C-F> :CtrlPFunky<Cr>
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-set noshowmode
+"set noshowmode
 
 " Color scheme
 if has('gui_running')
@@ -134,11 +136,13 @@ au BufRead,BufNewFile *.zsh* set filetype=zsh
 
 " add racket syntax highlighting
 au BufRead,BufNewFile *.rkt,*.rktl set filetype=racket
-au FileType racket  set lisp
-au FileType racket  set autoindent
-au FileType racket  set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
-au FileType mkd     set wrap
-au FileType mkd     setlocal nofoldenable
+au FileType racket set lisp
+au FileType racket set autoindent
+au FileType racket set lispwords+=public-method,override-method,private-method,syntax-case,syntax-rules
+au FileType mkd set wrap linebreak
+au FileType mkd setlocal nofoldenable
+au FileType markdown set wrap linebreak
+au FileType markdown setlocal nofoldenable
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set softtabstop=4 tabstop=4 shiftwidth=4
@@ -232,3 +236,31 @@ let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascr
 
 " Syntastic specific
 let g:syntastic_swift_checkers = []
+let g:syntastic_ruby_mri_exec = '/Users/toddlunter/.rbenv/shims/ruby'
+
+" Rainbow parens
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['red', 'blue', 'yellow', 'green'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'tex': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\       },
+\       'lisp': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'vim': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\       },
+\       'html': {
+\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\       },
+\       'css': 0,
+\   }
+\}
+
+map <Leader>rs :Dispatch bundle exec rspec %
