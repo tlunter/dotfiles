@@ -13,9 +13,12 @@ bind-key t command-prompt -p "send pane to:"  "join-pane -t '%%'"
 unbind [
 bind Escape copy-mode
 unbind p
-bind p paste-buffer
+bind p run "tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
 bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'y' copy-pipe "reattach-to-user-namespace pbcopy"
+
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
 
 bind r source-file ~/.tmux.conf
 
@@ -54,6 +57,7 @@ set -g @tpm_plugins "              \
   tmux-plugins/tpm                 \
   tmux-plugins/tmux-sensible       \
   tmux-plugins/tmux-resurrect      \
+  tmux-plugins/tmux-continuum      \
 "
 
 # initializes TMUX plugin manager
