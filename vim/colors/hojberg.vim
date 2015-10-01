@@ -201,9 +201,9 @@ call s:HL('PmenuSbar', '', 'deepergravel')
 call s:HL('PmenuThumb', 'brightgravel')
 
 " Diffs -----------------------------------------------------------------------
-call s:HL('DiffDelete', 'coal', 'taffy')
-call s:HL('DiffAdd',    'coal', 'moss')
-call s:HL('DiffChange', 'coal', 'tardis')
+call s:HL('DiffDelete', 'taffy', 'coal')
+call s:HL('DiffAdd',    'moss', 'coal')
+call s:HL('DiffChange', 'tardis', 'coal')
 call s:HL('DiffText',   'snow', 'deepergravel', 'bold')
 call s:HL('gitDiff', 'lightgravel', '',)
 call s:HL('diffRemoved', 'taffy', '',)
