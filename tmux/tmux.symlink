@@ -1,5 +1,6 @@
 unbind C-b
 set -g prefix C-x
+unbind-key -T prefix C-x
 
 set-window-option -g mode-keys vi
 
@@ -33,9 +34,10 @@ set -g default-terminal 'screen-256color'
 set -g renumber-windows on
 
 # increase scrollback lines
-set -g history-limit 10000000
+set -g history-limit 100000
 
 set -sg escape-time 0
+set -sg repeat-time 0
 setw -g pane-base-index 1
 
 # -- Statusbar ----------------------------------------------------------------
