@@ -4,3 +4,14 @@
 .netrwhist
 .DS_Store
 binstubs/*
+
+*.iml
+.idea
+.gradle
+
+notes.txt
+scratch
+hosts.txt
+
+elm-stuff
+node_modules
