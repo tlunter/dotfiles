@@ -1,6 +1,6 @@
 [user]
-    name = Todd Lunter
-    email = tlunter@gmail.com
+	name = Todd Lunter
+	email = tlunter@gmail.com
 [push]
     default = simple
 [github]
@@ -20,7 +20,7 @@
     dc = diff --cached
     dw = diff --word-diff=color
     s = status -sb
-    inject = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+    inject = "!f() { git commit --fixup=$1; git rebase --interactive --autosquash --autostash $1^; }; GIT_EDITOR=true f"
     temporary-amnesia = update-index --skip-worktree
     remember = update-index --no-skip-worktree
 [rebase]
