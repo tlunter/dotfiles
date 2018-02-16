@@ -7,12 +7,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-markdown'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'groenewege/vim-less'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'Shougo/vimproc'
 Plug 'bling/vim-airline'
@@ -22,20 +22,23 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'tacahiroy/ctrlp-funky'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'Keithbsmiley/swift.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'wakatime/vim-wakatime'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-rsi'
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/goyo.vim'
 Plug 'ElmCast/elm-vim'
+Plug 'fatih/vim-go'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
 runtime macros/matchit.vim
+
+set shell=/bin/sh
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -78,27 +81,28 @@ let g:ycm_add_preview_to_completeopt = 0
 set completeopt-=preview
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
-" Use Vim's current working directory as the search root
-let g:ctrlp_working_path_mode = 0
-if executable('ag')
-    " Use Ag over Grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -fl --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-
-    let g:agprg="ag --follow --nogroup --nocolor --column"
-endif
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-" Open CtrlP for Buffers
-nnoremap <C-L> :CtrlPBuffer<CR>
-
-let g:ctrlp_extensions = ['funky']
-nnoremap <C-F> :CtrlPFunky<Cr>
+" " Use Vim's current working directory as the search root
+" let g:ctrlp_working_path_mode = 0
+" if executable('ag')
+"     " Use Ag over Grep
+"     set grepprg=ag\ --nogroup\ --nocolor
+" 
+"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"     let g:ctrlp_user_command = 'ag %s -fl --nocolor -g ""'
+"     let g:ctrlp_log = 2
+"     let g:ctrlp_match_current_file = 1
+" 
+"     " ag is fast enough that CtrlP doesn't need to cache
+"     let g:ctrlp_use_caching = 1
+" 
+"     let g:ag_prg="ag --follow --nogroup --nocolor --column"
+" endif
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" 
+" " Open CtrlP for Buffers
+" nnoremap <C-L> :CtrlPBuffer<CR>
+nmap <C-L> :Buffers<CR>
+nmap <C-P> :Files<CR>
 
 " Status bar
 set laststatus=2
@@ -242,10 +246,10 @@ set term=screen-256color
 let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
 " Syntastic specific
-let g:syntastic_swift_checkers = []
-let g:syntastic_ruby_mri_exec = '/Users/toddlunter/.rbenv/shims/ruby'
-let g:syntastic_java_javac_classpath = 'build/classes/main:build/deps/*.jar'
-let g:elm_syntastic_show_warnings = 1
+if filereadable("Gemfile")
+  let g:ale_ruby_rubocop_executable = 'bundle'
+endif
+let g:ale_java_javac_classpath = 'build/classes/main:build/deps/*.jar'
 let g:ycm_semantic_triggers = {
      \ 'elm' : ['.'],
      \}
@@ -279,3 +283,4 @@ let g:rainbow_conf = {
 \}
 
 map <Leader>rs :Dispatch bundle exec rspec %
+map <Leader>gd :GoDef<CR>
