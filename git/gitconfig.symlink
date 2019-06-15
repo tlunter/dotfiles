@@ -8,11 +8,12 @@
 [http]
     sslVerify = false
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore
     autocrlf = false
     safecrlf = true
     eol      = lf
+    abbrev   = 7
 [alias]
     l = log --graph
     c = commit --verbose
@@ -22,6 +23,7 @@
     s = status -sb
     inject = "!f() { git commit --fixup=$1; git rebase --interactive --autosquash --autostash $1^; }; GIT_EDITOR=true f"
     temporary-amnesia = update-index --skip-worktree
+    rb = branch --sort=-committerdate
     remember = update-index --no-skip-worktree
 [rebase]
     pull = true

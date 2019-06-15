@@ -27,4 +27,3 @@ source $ZSH/oh-my-zsh.sh
 if [[ -a ~/.pystartup ]]; then
     export PYTHONSTARTUP=~/.pystartup
 fi
-

@@ -15,3 +15,8 @@ hosts.txt
 
 elm-stuff
 node_modules
+
+# android studio
+local.properties
+
+lombok.jar

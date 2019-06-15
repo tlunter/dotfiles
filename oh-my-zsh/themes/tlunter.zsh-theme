@@ -40,6 +40,7 @@ vc_status="%{$terminfo_down_sc$git$terminfo[rc]%}" # the second line
 PROMPT="$vc_status"
 RPROMPT='$NOCOLOR%d$(get_virtualenv_info)'
 
+PROMPT+='$( date +"[%H:%M:%S]" ) '
 PROMPT+=$PR_SIGN                 # the user sign
 PROMPT+="%{$fg[red]%}∴$NOCOLOR"
 PROMPT+=" "                      # an additional space

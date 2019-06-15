@@ -11,16 +11,17 @@ Plug 'groenewege/vim-less'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
 Plug 'w0rp/ale'
 Plug 'eagletmt/ghcmod-vim'
-Plug 'Shougo/vimproc'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'mxw/vim-jsx'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'airblade/vim-gitgutter'
@@ -79,7 +80,7 @@ set smartcase
 " YCM stuff
 let g:ycm_add_preview_to_completeopt = 0
 set completeopt-=preview
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
 
 " " Use Vim's current working directory as the search root
 " let g:ctrlp_working_path_mode = 0
@@ -161,6 +162,7 @@ au FileType html    set softtabstop=2 tabstop=2 shiftwidth=2
 
 " make JS use 2 spaces
 au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType typescript set softtabstop=2 tabstop=2 shiftwidth=2
 
 " make LESS use 2 spaces
 au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
@@ -240,7 +242,10 @@ imap jk <Esc>
 map <Leader>nt :NERDTreeToggle<CR>
 
 " 256 colors with tmux
-set term=screen-256color
+" set term=screen-256color
+
+" Use system ruby for neovim
+let g:ruby_host_prog = '/usr/local/bin/neovim-ruby-host'
 
 " Markdown languages for fenced blocks
 let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
@@ -281,6 +286,10 @@ let g:rainbow_conf = {
 \       'css': 0,
 \   }
 \}
+
+let g:prettier#exec_cmd_async = 1
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 map <Leader>rs :Dispatch bundle exec rspec %
 map <Leader>gd :GoDef<CR>

@@ -7,6 +7,9 @@ function p {
 }
 alias ls='ls -lhp'
 
+# Source FZF for zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Removes the terrible .DS_Store files from the Mac OS X operating system
 alias dsclean=' find . -type f -name "*.DS_Store" -exec rm -f \{\} \;'
 
@@ -31,6 +34,3 @@ unsetopt HIST_VERIFY
 zstyle ':completion:*' rehash true
 
 autoload -U zmv
-
-# Sets the default editor to Vim
-EDITOR=/usr/bin/vim
