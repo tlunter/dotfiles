@@ -6,34 +6,38 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'flazz/vim-colorschemes'
-Plug 'tpope/vim-markdown'
-Plug 'groenewege/vim-less'
-Plug 'tpope/vim-rails'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
-Plug 'w0rp/ale'
-Plug 'eagletmt/ghcmod-vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-dispatch'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-surround'
-Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'mxw/vim-jsx'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-rsi'
 Plug 'junegunn/goyo.vim'
+Plug 'rking/ag.vim'
+
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-markdown'
+Plug 'groenewege/vim-less'
+Plug 'eagletmt/ghcmod-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'fatih/vim-go'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 Plug 'tweekmonster/startuptime.vim'
-Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -62,8 +66,6 @@ set shiftwidth=4
 set softtabstop=4
 set linespace=2
 set expandtab
-" 80 character highlighting
-" let &colorcolumn=join(range(81,999),",")
 
 " Undo stuff
 set undodir=~/.vim/backup
@@ -76,32 +78,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" YCM stuff
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
-
-" " Use Vim's current working directory as the search root
-" let g:ctrlp_working_path_mode = 0
-" if executable('ag')
-"     " Use Ag over Grep
-"     set grepprg=ag\ --nogroup\ --nocolor
-" 
-"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"     let g:ctrlp_user_command = 'ag %s -fl --nocolor -g ""'
-"     let g:ctrlp_log = 2
-"     let g:ctrlp_match_current_file = 1
-" 
-"     " ag is fast enough that CtrlP doesn't need to cache
-"     let g:ctrlp_use_caching = 1
-" 
-"     let g:ag_prg="ag --follow --nogroup --nocolor --column"
-" endif
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" 
-" " Open CtrlP for Buffers
-" nnoremap <C-L> :CtrlPBuffer<CR>
 nmap <C-L> :Buffers<CR>
 nmap <C-P> :Files<CR>
 
@@ -109,7 +85,6 @@ nmap <C-P> :Files<CR>
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"set noshowmode
 
 " Color scheme
 if has('gui_running')
@@ -130,12 +105,6 @@ au FileType make set noexpandtab
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Fastfile,config.ru} set filetype=ruby
-
-" add json syntax highlighting
-au BufRead,BufNewFile *.json set filetype=javascript
-
-" add jsx styling for js files
-let g:jsx_ext_required = 0
 
 " add haskell syntax highlighting
 au BufRead,BufNewFile *.hsc  set filetype=haskell
@@ -169,7 +138,6 @@ au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
 
 " make Ruby use 2 spaces
 au FileType ruby    set softtabstop=2 tabstop=2 shiftwidth=2
-"au FileType ruby    syntax match Error "'"
 
 au BufRead,BufNewFile *.yml.erb set filetype=yaml
 au BufRead,BufNewFile *.sh.erb set filetype=sh
@@ -204,10 +172,6 @@ let mapleader=','
 " vimrc mappings
 map <Leader>ve :e ~/.vimrc
 map <Leader>rv :source ~/.vimrc
-
-" EasyMotion over regular f/F
-" map f <Leader><Leader>f
-" map F <Leader><Leader>F
 
 " A work around when vim isn't open with sudo
 map <Leader>ws :w !sudo tee %
@@ -250,15 +214,6 @@ let g:ruby_host_prog = '/usr/local/bin/neovim-ruby-host'
 " Markdown languages for fenced blocks
 let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
-" Syntastic specific
-if filereadable("Gemfile")
-  let g:ale_ruby_rubocop_executable = 'bundle'
-endif
-let g:ale_java_javac_classpath = 'build/classes/main:build/deps/*.jar'
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
-
 " ghcmod-vim specific
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 
@@ -287,9 +242,20 @@ let g:rainbow_conf = {
 \   }
 \}
 
-let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" use <tab> and <S-Tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 map <Leader>rs :Dispatch bundle exec rspec %
 map <Leader>gd :GoDef<CR>

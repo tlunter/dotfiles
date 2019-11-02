@@ -1,6 +1,7 @@
 require 'rake'
 
 files = {
+  'coc/package.json' => '.config/coc/extensions/package.json',
   'git/gitconfig.symlink' => '.gitconfig',
   'git/gitignore.symlink' => '.gitignore',
   'oh-my-zsh/plugins/tlunter' => '.oh-my-zsh/custom/plugins/tlunter',
