@@ -7,7 +7,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'flazz/vim-colorschemes'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -18,7 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-rsi'
 Plug 'junegunn/goyo.vim'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
@@ -30,12 +31,17 @@ Plug 'fatih/vim-go'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'cespare/vim-toml'
+Plug 'maralla/vim-toml-enhance'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'tweekmonster/startuptime.vim'
 
@@ -78,8 +84,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-nmap <C-L> :Buffers<CR>
-nmap <C-P> :Files<CR>
+nmap <C-L> :Telescope buffers<CR>
+nmap <C-P> :Telescope find_files<CR>
 
 " Status bar
 set laststatus=2
@@ -132,6 +138,8 @@ au FileType html    set softtabstop=2 tabstop=2 shiftwidth=2
 " make JS use 2 spaces
 au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2
 au FileType typescript set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType javascriptreact set softtabstop=2 tabstop=2 shiftwidth=2
+au FileType typescriptreact set softtabstop=2 tabstop=2 shiftwidth=2
 
 " make LESS use 2 spaces
 au FileType less    set softtabstop=2 tabstop=2 shiftwidth=2
@@ -144,6 +152,7 @@ au BufRead,BufNewFile *.sh.erb set filetype=sh
 au BufNewFile,BufRead *.mod  set filetype=ampl
 au BufNewFile,BufRead *.dat  set filetype=ampl
 au BufNewFile,BufRead *.ampl set filetype=ampl
+au BufNewFile,BufRead *.swift set filetype=swift
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -205,6 +214,12 @@ imap jk <Esc>
 " Opens NerdTree
 map <Leader>nt :NERDTreeToggle<CR>
 
+" Opens LSP Window
+map <Leader>nl :LspFloat<CR>
+
+" Opens LSP Window
+map <Leader>nr :LspRefs<CR>
+
 " 256 colors with tmux
 " set term=screen-256color
 
@@ -242,20 +257,41 @@ let g:rainbow_conf = {
 \   }
 \}
 
-" use <tab> and <S-Tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" Ack.vim uses ag
+let g:ackprg = 'ag --vimgrep'
+cnoreabbrev Ag Ack
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
+set completeopt=menuone,noselect
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-map <Leader>rs :Dispatch bundle exec rspec %
-map <Leader>gd :GoDef<CR>
+let g:compe = {}
+let g:compe.autocomplete = v:true
+let g:compe.enabled = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+
+lua require("lsp-config")
+lua << EOF
+require('telescope').setup {
+  defaults = {
+    layout_strategy = 'vertical',
+    mappings = {
+      i = {
+        ['<C-j>'] = require('telescope.actions').move_selection_next,
+        ['<C-k>'] = require('telescope.actions').move_selection_previous,
+        ['<C-u>'] = false, -- use standard readline kill line
+        ['<esc>'] = require('telescope.actions').close, -- close even if in insert mode in the popup
+      },
+    },
+  },
+  pickers = {
+    buffers = {
+      sort_mru = true,
+    },
+  },
+}
+EOF
