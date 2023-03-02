@@ -1,9 +1,9 @@
 require 'rake'
 
 files = {
-  'coc/package.json' => '.config/coc/extensions/package.json',
   'git/gitconfig.symlink' => '.gitconfig',
   'git/gitignore.symlink' => '.gitignore',
+  'nvim' => '.config/nvim',
   'oh-my-zsh/plugins/tlunter' => '.oh-my-zsh/custom/plugins/tlunter',
   'oh-my-zsh/themes/tlunter.zsh-theme' => '.oh-my-zsh/custom/themes/tlunter.zsh-theme',
   'python/startup.symlink' => '.pystartup',
